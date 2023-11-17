@@ -1,14 +1,21 @@
 package com.Grupo6.Lab1.models;
 
+import java.awt.*;
+
 public class Emergencia {
     private Long idEmergencia;
     private String nombreEmergencia;
     private Long idInstitucion;
+    private double latitud;
+    private double longitud;
+    private Point geom;
 
-    public Emergencia(Long idEmergencia, String nombreEmergencia, Long idInstitucion) {
+    public Emergencia(Long idEmergencia, String nombreEmergencia, Long idInstitucion, double latitud, double longitud) {
         this.idEmergencia = idEmergencia;
         this.nombreEmergencia = nombreEmergencia;
         this.idInstitucion = idInstitucion;
+        this.latitud = latitud;
+        this.longitud = longitud;
     }
 
     public Long getIdEmergencia() {
@@ -35,12 +42,39 @@ public class Emergencia {
         this.idInstitucion = idInstitucion;
     }
 
+    public double getLatitud() {
+        return latitud;
+    }
+
+    public void setLatitud(double latitud) {
+        this.latitud = latitud;
+    }
+
+    public double getLongitud() {
+        return longitud;
+    }
+
+    public void setLongitud(double longitud) {
+        this.longitud = longitud;
+    }
+
+    public Point getGeom() {
+        return geom;
+    }
+
+    public void setGeom(Point geom) {
+        this.geom = geom;
+    }
+
     @Override
     public String toString() {
         return "Emergencia{" +
                 "idEmergencia=" + idEmergencia +
                 ", nombreEmergencia='" + nombreEmergencia + '\'' +
                 ", idInstitucion=" + idInstitucion +
+                ", latitud=" + latitud +
+                ", longitud=" + longitud +
+                ", geom=" + geom +
                 '}';
     }
 }

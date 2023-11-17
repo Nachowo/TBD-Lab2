@@ -9,8 +9,6 @@ export default {
       rut:"",
       nombre:"",
       password: "",
-      latitud: "",
-      longitud: "",
       error: "",
     };
   },
@@ -36,8 +34,6 @@ export default {
             emailVoluntario: this.emailVoluntario,
             contraseniaVoluntario: this.password,
             nombreCompletoVoluntario: this.nombre,
-            latitud: this.latitud,
-            longitud: this.longitud,
             rutVoluntario: this.rut
           },
         });
@@ -111,22 +107,15 @@ export default {
           v-model="rut"
         ></v-text-field>
       </v-responsive>
-      <v-responsive class="mx-auto" max-width="400">
-        <v-text-field
-          label="Latitud"
-          placeholder="Introduzca su latitud"
-          type="input"
-          v-model="latitud"
-        ></v-text-field>
-      </v-responsive>
-      <v-responsive class="mx-auto" max-width="400">
-        <v-text-field
-          label="Longitud"
-          placeholder="Introduzca su longitud"
-          type="input"
-          v-model="longitud"
-        ></v-text-field>
-      </v-responsive>
+      <leaflet-map
+        @click="onMapClick"
+        :center="[defaultLatitude, defaultLongitude]"
+        :zoom="defaultZoom"
+        style="height: 300px; margin-bottom: 16px"
+      >
+        <leaflet-tile-layer :url="tileLayerUrl"></leaflet-tile-layer>
+        <leaflet-marker v-if="selectedLocation" :lat-lng="selectedLocation"></leaflet-marker>
+      </leaflet-map>
       <v-btn
         block
         class="mb-8"

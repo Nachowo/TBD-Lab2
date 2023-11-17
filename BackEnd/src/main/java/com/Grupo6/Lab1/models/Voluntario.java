@@ -1,5 +1,7 @@
 package com.Grupo6.Lab1.models;
 
+import java.awt.*;
+
 public class Voluntario {
     private Long idVoluntario;
     private String emailVoluntario;
@@ -7,6 +9,9 @@ public class Voluntario {
     private String nombreCompletoVoluntario;
     private String contraseniaVoluntario;
 
+    private double latitud;
+    private double longitud;
+    private Point geom;
     public String getContraseniaVoluntario() {
         return contraseniaVoluntario;
     }
@@ -56,6 +61,25 @@ public class Voluntario {
                 ", rutVoluntario='" + rutVoluntario + '\'' +
                 ", nombreCompletoVoluntario='" + nombreCompletoVoluntario + '\'' +
                 ", contraseniaVoluntario='" + contraseniaVoluntario + '\'' +
+                ", latitud=" + latitud +
+                ", longitud=" + longitud +
+                ", geom=" + geom +
                 '}';
+    }
+
+    public double getLatitud() {
+        return latitud;
+    }
+
+    public void setLatitud(double latitud) {
+        this.latitud = latitud;
+    }
+
+    public double getLongitud() {
+        return longitud;
+    }
+
+    public void setLongitud(double longitud) {
+        this.longitud = longitud;
     }
 }

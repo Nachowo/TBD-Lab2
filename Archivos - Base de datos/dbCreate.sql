@@ -14,6 +14,9 @@ CREATE TABLE IF NOT EXISTS Voluntario(
     rutVoluntario text,
     nombreCompletoVoluntario text,
     contraseniaVoluntario text,
+    latitud double precision,
+    longitud double precision,
+    geom geometry(Point,4326),
     PRIMARY KEY (idVoluntario)
 );
 

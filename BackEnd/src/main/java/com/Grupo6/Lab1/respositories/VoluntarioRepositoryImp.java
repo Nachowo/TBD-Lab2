@@ -36,11 +36,13 @@ public class VoluntarioRepositoryImp implements VoluntarioRepository {
         String contra = BCrypt.hashpw(voluntario.getContraseniaVoluntario(), BCrypt.gensalt());
 
         try(Connection conn = sql2o.open()){
-            conn.createQuery("INSERT INTO voluntario (emailVoluntario, rutVoluntario, nombreCompletoVoluntario, contraseniaVoluntario) VALUES (:email, :rut, :nombre_completo, :password)")
+            conn.createQuery("INSERT INTO voluntario (emailVoluntario, rutVoluntario, nombreCompletoVoluntario, contraseniaVoluntario, longitud, latitud) VALUES (:email, :rut, :nombre_completo, :password,:longitud,:latitud)")
                     .addParameter("rut", voluntario.getRutVoluntario())
                     .addParameter("nombre_completo", voluntario.getNombreCompletoVoluntario())
                     .addParameter("email", voluntario.getEmailVoluntario())
                     .addParameter("password", contra)
+                    .addParameter("longitud", voluntario.getLongitud())
+                    .addParameter("latitud", voluntario.getLatitud())
                     .executeUpdate();
             voluntario.setContraseniaVoluntario(contra);
             return voluntario;

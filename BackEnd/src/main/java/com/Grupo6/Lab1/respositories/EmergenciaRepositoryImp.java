@@ -16,11 +16,13 @@ public class EmergenciaRepositoryImp implements EmergenciaRepository {
 
     public Emergencia crear(Emergencia emergencia) {
         try (Connection conn = sql2o.open()) {
-            String sql = "INSERT INTO public.Emergencia(nombreEmergencia, idInstitucion) " +
-                    "VALUES (:nombreEmergencia, :idInstitucion)";
+            String sql = "INSERT INTO public.Emergencia(nombreEmergencia, idInstitucion,latitud,longitud) " +
+                    "VALUES (:nombreEmergencia, :idInstitucion, :latitud, :longitud)";
             conn.createQuery(sql, true)
                     .addParameter("nombreEmergencia", emergencia.getNombreEmergencia())
                     .addParameter("idInstitucion", emergencia.getIdInstitucion())
+                    .addParameter("latitud", emergencia.getLatitud())
+                    .addParameter("longitud", emergencia.getLongitud())
                     .executeUpdate();
             return emergencia;
         } catch (Exception e) {
@@ -41,11 +43,13 @@ public class EmergenciaRepositoryImp implements EmergenciaRepository {
 
     public String update(Emergencia emergencia, Long idEmergencia) {
         try (Connection conn = sql2o.open()) {
-            String updateSql = "UPDATE Emergencia SET nombreEmergencia=:nombreEmergencia, idInstitucion=:idInstitucion WHERE idEmergencia=:idEmergencia";
+            String updateSql = "UPDATE Emergencia SET nombreEmergencia=:nombreEmergencia, idInstitucion=:idInstitucion,latitud=:latitud,longitud=:longitud WHERE idEmergencia=:idEmergencia";
             conn.createQuery(updateSql)
                     .addParameter("idEmergencia", idEmergencia)
                     .addParameter("nombreEmergencia", emergencia.getNombreEmergencia())
                     .addParameter("idInstitucion", emergencia.getIdInstitucion())
+                    .addParameter("latitud", emergencia.getLatitud())
+                    .addParameter("longitud", emergencia.getLongitud())
                     .executeUpdate();
             return "Se actualizó Emergencia";
         } catch (Exception e) {
