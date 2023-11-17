@@ -1,3 +1,5 @@
+CREATE EXTENSION IF NOT EXISTS "postgis";
+
 CREATE TABLE IF NOT EXISTS Institucion(
     idInstitucion serial NOT null,
     nombreInstitucion text,
@@ -20,11 +22,14 @@ CREATE TABLE IF NOT EXISTS Habilidad(
     nombreHabilidad text,
     PRIMARY KEY (idHabilidad)
 );
-
+-- añadidos datos de longitud y latitud, que se usarán para el parametro geom
 CREATE TABLE IF NOT EXISTS Emergencia(
     idEmergencia serial NOT null,
     nombreEmergencia text,
     idInstitucion bigint,
+    latitud double precision,
+    longitud double precision,
+    geom geometry(Point,4326),
     PRIMARY KEY (idEmergencia),
     FOREIGN KEY (idInstitucion) REFERENCES Institucion(idInstitucion)
 );

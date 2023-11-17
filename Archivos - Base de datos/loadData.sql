@@ -15,9 +15,15 @@ INSERT INTO public.Habilidad(nombreHabilidad) VALUES ('Supervivencia en entornos
 INSERT INTO public.Habilidad(nombreHabilidad) VALUES ('Transporte de heridos y evacuación médica');
 INSERT INTO public.Habilidad(nombreHabilidad) VALUES ('Coordinación de recursos de ayuda humanitaria');
 
-INSERT INTO public.Emergencia(nombreEmergencia, idInstitucion) VALUES('Fuego en domicilio', 1);
-INSERT INTO public.Emergencia(nombreEmergencia, idInstitucion) VALUES('Derrumbe', 1);
-INSERT INTO public.Emergencia(nombreEmergencia, idInstitucion) VALUES('Indundación', 1);
+--INSERT INTO public.Emergencia(nombreEmergencia, idInstitucion) VALUES('Fuego en domicilio', 1);
+--INSERT INTO public.Emergencia(nombreEmergencia, idInstitucion) VALUES('Derrumbe', 1);
+--INSERT INTO public.Emergencia(nombreEmergencia, idInstitucion) VALUES('Indundación', 1);
+
+--Insert de emergencias nuevo, ahora incluye longitud y latitud
+
+INSERT INTO Emergencia (nombreEmergencia, idInstitucion, latitud, longitud)
+VALUES ('Incidente en Santiago', 1, -33.4691, -70.6420);
+
 
 INSERT INTO public.EmeHabilidad(idEmergencia, idHabilidad) VALUES(1, 1);
 INSERT INTO public.EmeHabilidad(idEmergencia, idHabilidad) VALUES(1, 4);
