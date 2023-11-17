@@ -24,6 +24,12 @@ INSERT INTO public.Habilidad(nombreHabilidad) VALUES ('Coordinación de recursos
 INSERT INTO Emergencia (nombreEmergencia, idInstitucion, latitud, longitud)
 VALUES ('Incidente en Santiago', 1, -33.4691, -70.6420);
 
+INSERT INTO Emergencia (nombreEmergencia, idInstitucion, latitud, longitud)
+VALUES ('Terremto en Santiago', 1, -33.4691, -70.6420);
+
+INSERT INTO Emergencia (nombreEmergencia, idInstitucion, latitud, longitud)
+VALUES ('Incendio forestal', 1, -55.4691, -30.6420);
+
 
 INSERT INTO public.EmeHabilidad(idEmergencia, idHabilidad) VALUES(1, 1);
 INSERT INTO public.EmeHabilidad(idEmergencia, idHabilidad) VALUES(1, 4);
