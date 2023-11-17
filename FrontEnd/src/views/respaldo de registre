@@ -1,8 +1,17 @@
 <script>
 import axios from "axios";
-import { LMap, LTileLayer, LMarker } from "@vue-leaflet/vue-leaflet";
+import mapboxgl from 'mapbox-gl';
 export default {
   name: "register",
+  mounted() {
+    mapboxgl.accessToken = 'pk.eyJ1IjoibmFjaG93byIsImEiOiJjbHAyeTVmamMwM2o0MmpzMWN1OTV3eWt1In0.M8r291Kj6H18Wp80JkRx4g';
+    const map = new mapboxgl.Map({
+      container: 'map', // container ID
+      style: 'mapbox://styles/mapbox/streets-v12', // style URL
+      center: [-70.6483, -33.4378], // Long-Lat
+      zoom: 13 // starting zoom
+    });
+  },
   data() {
     return {
       emailVoluntario:"",
@@ -107,15 +116,11 @@ export default {
           v-model="rut"
         ></v-text-field>
       </v-responsive>
-      <leaflet-map
-        @click="onMapClick"
-        :center="[defaultLatitude, defaultLongitude]"
-        :zoom="defaultZoom"
-        style="height: 300px; margin-bottom: 16px"
-      >
-        <leaflet-tile-layer :url="tileLayerUrl"></leaflet-tile-layer>
-        <leaflet-marker v-if="selectedLocation" :lat-lng="selectedLocation"></leaflet-marker>
-      </leaflet-map>
+
+      <div class="map-container" >
+        <div id="map"></div>
+      </div>
+
       <v-btn
         block
         class="mb-8"
@@ -141,6 +146,17 @@ export default {
 </template>
 
 <style scoped>
+  #map {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 100%;
+}
+.map-container {
+  width: 300px; /* Ancho específico del contenedor del mapa */
+  height: 200px; /* Altura específica del contenedor del mapa */
+  position: relative;
+}
 body {
   background-color: #424953;
   display: flex;
@@ -165,4 +181,6 @@ body {
   justify-content: center;
   align-items: center;
 }
+@import 'mapbox-gl/dist/mapbox-gl.css';
+
 </style>

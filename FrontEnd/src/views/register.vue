@@ -1,17 +1,30 @@
 <script>
 import axios from "axios";
-import { LMap, LTileLayer, LMarker } from "@vue-leaflet/vue-leaflet";
+import mapboxgl from 'mapbox-gl';
 export default {
   name: "register",
+  mounted() {
+    /*
+    MAPA
+
+    mapboxgl.accessToken = 'pk.eyJ1IjoibmFjaG93byIsImEiOiJjbHAyeTVmamMwM2o0MmpzMWN1OTV3eWt1In0.M8r291Kj6H18Wp80JkRx4g';
+    const map = new mapboxgl.Map({
+      container: 'map', 
+      style: 'mapbox://styles/mapbox/streets-v12',
+      center: [-70.6483, -33.4378], // Longitud y Latitud iniciales
+      zoom: 13 // starting zoom
+    });}*/
+  },
   data() {
     return {
+      userAddress: "",
       emailVoluntario:"",
       rut:"",
       nombre:"",
       password: "",
-      latitud: "",
-      longitud: "",
       error: "",
+      latitud: "",
+      longitud: ""
     };
   },
   computed:{
@@ -29,6 +42,9 @@ export default {
               text: 'Ingrese un correo valido',
           })
         }else{
+          console.log("inicio geoCodear con: "+this.userAddress);
+          await this.geoCodear(this.userAddress);
+          console.log("fin geoCodear + long y lati:"+this.longitud+" "+this.latitud);
           const response = await axios({
           method: "POST",
           url: "http://localhost:8090/voluntario/register",
@@ -36,9 +52,9 @@ export default {
             emailVoluntario: this.emailVoluntario,
             contraseniaVoluntario: this.password,
             nombreCompletoVoluntario: this.nombre,
-            latitud: this.latitud,
+            rutVoluntario: this.rut,
             longitud: this.longitud,
-            rutVoluntario: this.rut
+            latitud: this.latitud
           },
         });
         if (response.status === 200) {
@@ -60,7 +76,31 @@ export default {
         });
       }
     },
-  },
+    async geoCodear(direccion){
+      try {
+        //solicitud a la API de Mapbox
+      const response = await fetch(
+        `https://api.mapbox.com/geocoding/v5/mapbox.places/${encodeURIComponent(
+          direccion
+        )}.json?access_token=pk.eyJ1IjoibmFjaG93byIsImEiOiJjbHAyeTVmamMwM2o0MmpzMWN1OTV3eWt1In0.M8r291Kj6H18Wp80JkRx4g`
+      );
+
+      const data = await response.json();
+
+      // Lista de features => coincidencias
+      // la primera es la mas parecida
+
+      const location = data.features[0].center;
+      this.latitud = location[1];
+      this.longitud = location[0];
+      console.log('Latitud:', location[1]);
+      console.log('Longitud:', location[0]);
+    } catch (error) {
+      console.error('Error al geocodificar la dirección:', error);
+    }
+  }
+    }
+  
 };
 </script>
 <template>
@@ -111,20 +151,20 @@ export default {
           v-model="rut"
         ></v-text-field>
       </v-responsive>
+      
+      
+
+      <!--
+        <div class="map-container" >
+        <div id="map"></div>
+      </div>
+      -->
+
       <v-responsive class="mx-auto" max-width="400">
         <v-text-field
-          label="Latitud"
-          placeholder="Introduzca su latitud"
-          type="input"
-          v-model="latitud"
-        ></v-text-field>
-      </v-responsive>
-      <v-responsive class="mx-auto" max-width="400">
-        <v-text-field
-          label="Longitud"
-          placeholder="Introduzca su longitud"
-          type="input"
-          v-model="longitud"
+          label="Dirección"
+          placeholder="Introduzca su dirección"
+          v-model="userAddress"
         ></v-text-field>
       </v-responsive>
       <v-btn
@@ -152,6 +192,21 @@ export default {
 </template>
 
 <style scoped>
+@import 'mapbox-gl/dist/mapbox-gl.css';
+
+  #map {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 100%;
+}
+.map-container {
+margin: 0 auto;
+  width: 300px; 
+  height: 300px; 
+  position: relative;
+  margin-bottom: 50px;
+}
 body {
   background-color: #424953;
   display: flex;
@@ -176,4 +231,5 @@ body {
   justify-content: center;
   align-items: center;
 }
+
 </style>
