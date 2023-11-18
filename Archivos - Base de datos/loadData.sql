@@ -1,4 +1,4 @@
--- La población de voluntarios y voluntarioHabilidad es necesario hacerlo manual, esto a causa del hasheo de la llave a la hora de registrarse y logearse
+-- La población de voluntarios y voluntarioHabilidad es necesario hacerlo manual, esto a causa del hasheo de la llave a la hora de registrarse y logearse por lo que esto se hara mediante el FRONTEND --
 
 
 INSERT INTO public.Institucion(nombreInstitucion, correoInstitucion, contraseniaInstitucion) VALUES('Conaf', 'Conaf@gmail.com', '123');
@@ -56,4 +56,5 @@ INSERT INTO public.Tarea(nombreTarea, idEstadoTarea, idEmergencia) VALUES('apaga
 INSERT INTO public.TareaHabilidad(idTarea, idHabilidad) VALUES(1, 1);
 
 
-UPDATE emergencia SET geom = ST_SetSRID(ST_MakePoint(latitud, longitud),4326)
+UPDATE emergencia SET geom = ST_SetSRID(ST_MakePoint(-70.641, -33.468), 4326)
+--UPDATE emergencia SET geom = ST_SetSRID(ST_MakePoint(latitud, longitud),4326)te mandaba al antartica--

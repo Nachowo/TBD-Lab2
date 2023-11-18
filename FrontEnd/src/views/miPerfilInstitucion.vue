@@ -62,7 +62,7 @@ export default {
       institucion: {
         correoInstitucion: '',
         nombreInstitucion: '',
-        id: '', // Agrega la propiedad 'id' al objeto institucion
+        idInstitucion: '', // Agrega la propiedad 'id' al objeto institucion
       },
     };
   },
@@ -88,7 +88,7 @@ export default {
           });
         } else {
           // Verificar que la propiedad 'id' esté presente en 'this.institucion'
-          if (!this.institucion.id) {
+          if (!this.institucion.idInstitucion) {
             // Manejar el caso en que no se haya guardado la ID correctamente
             console.error('La ID de la institución no está disponible');
             return;
@@ -98,7 +98,13 @@ export default {
             `http://localhost:8090/institucion/actualizarInstitucion/${this.institucion.idInstitucion}`,
             this.institucion
           ); 
-          // ... resto de tu lógica ...
+          this.$swal({ 
+            icon: 'success',
+            title: 'Éxito',
+            text: 'Se actualizaron los datos de la Intitucion correctamente'
+          }).then(() => {
+            this.$router.push("/vistaInstitucion");
+          });
         }
       } catch (error) {
         console.error(error);
