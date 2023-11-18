@@ -17,8 +17,8 @@
           <ul>
           </ul>
           <br>
-          <v-btn class="button" color="black" variant="outlined" to="/.">Botón 1</v-btn>
-          <v-btn class="button" color="black" variant="outlined" to="/.">Botón 2</v-btn>
+          <v-btn class="button" color="black" variant="outlined" to="/.">Botón inutil 1</v-btn>
+          <v-btn class="button" color="black" variant="outlined" to="/.">Botón inutil 2</v-btn>
         </div>
       </div>
     </div>
@@ -28,7 +28,7 @@
 
 <script>
 import axios from 'axios';
-import Header from "../components/Header.vue";
+import Header from "../components/HeaderInstitucion.vue";
 export default {
   components: {
     Header,

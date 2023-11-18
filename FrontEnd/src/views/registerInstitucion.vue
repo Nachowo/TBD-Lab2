@@ -30,7 +30,7 @@ export default {
               title: 'Éxito',
               text: 'Su perfil de Institución se creó exitosamente',
           }).then(() => {
-              this.$router.push('/about'); // Redirige al usuario
+              this.$router.push('/loginInstitucion'); 
           });
         }
       } catch (error) {
@@ -59,8 +59,8 @@ export default {
       <div class="text-subtitle-1 text-medium-emphasis">Ingrese los datos:</div>
       <v-responsive class="mx-auto" max-width="400">
         <v-text-field
-          label="Usuario"
-          placeholder="Introduzca su email de Institucion"
+          label="Email institución"
+          placeholder="Introduzca su email de institución"
           type="input"
           v-model="correoInstitucion"
         ></v-text-field>
@@ -78,7 +78,7 @@ export default {
       <v-responsive class="mx-auto" max-width="400">
         <v-text-field
           label="Nombre"
-          placeholder="Introduzca su nombre"
+          placeholder="Nombre de la institución"
           type="input"
           v-model="nombre"
         ></v-text-field>

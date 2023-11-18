@@ -58,7 +58,28 @@ const router = createRouter({
       path: '/mostrarPrerequisitos',
       name: 'mostrarPrerequisitos',
       component: () => import('../views/mostrarPrerequisitos.vue')
+    },
+    {
+      path: '/vistaInstitucion',
+      name: 'vistaInstitucion',
+      component: () => import('../views/vistaInstitucion.vue')
+    },
+    {
+      path: '/miPerfilInstitucion',
+      name: 'miPerfilInstitucion',
+      component: () => import('../views/miPerfilInstitucion.vue')
+    },
+    {
+      path: '/catastrofesInstitucion',
+      name: 'catastrofesInstitucion',
+      component: () => import('../views/catastrofesInstitucion.vue')
+    },
+    {
+      path: '/listaVoluntariosView',
+      name: 'listaVoluntariosView',
+      component: () => import('../views/listaVoluntariosView.vue')
     }
+
   ]
 })
 
