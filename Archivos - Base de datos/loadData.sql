@@ -54,3 +54,6 @@ INSERT INTO public.EstadoTarea(estadoTarea) VALUES(False);
 INSERT INTO public.Tarea(nombreTarea, idEstadoTarea, idEmergencia) VALUES('apagar', 1, 1);
 
 INSERT INTO public.TareaHabilidad(idTarea, idHabilidad) VALUES(1, 1);
+
+
+UPDATE emergencia SET geom = ST_SetSRID(ST_MakePoint(latitud, longitud),4326)
