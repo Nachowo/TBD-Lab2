@@ -1,7 +1,5 @@
 package com.Grupo6.Lab1.respositories;
 
-import com.Grupo6.Lab1.models.Emergencia;
-import com.Grupo6.Lab1.models.Tarea;
 import com.Grupo6.Lab1.models.Voluntario;
 import org.mindrot.jbcrypt.BCrypt;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -63,30 +61,18 @@ public class VoluntarioRepositoryImp implements VoluntarioRepository {
                     .executeUpdate();
         }
     }
-///////////////Posible QUERY 22/////////////////////
-    /*
+///////////////QUERY 22/////////////////////
     @Override
-    public List<Voluntario> obtenerVoluntariosCercanos(Tarea tarea, int N) {
-        Emergencia emergencia = obtenerEmergenciaPorId(tarea.getIdEmergencia());
-
+    public List<Voluntario> VoluntariosCercanos(Long idEmergencia, int N) {
         try (Connection conn = sql2o.open()) {
-            String sqlQuery = "SELECT *, " +
-                    "3959 * acos(" +
-                    "cos(radians(:emergenciaLatitud)) * cos(radians(latitud)) * cos(radians(longitud) - radians(:emergenciaLongitud)) + " +
-                    "sin(radians(:emergenciaLatitud)) * sin(radians(latitud))" +
-                    ") AS distancia " +
-                    "FROM voluntario " +
-                    "ORDER BY distancia " +
-                    "LIMIT :N";
-
-            List<Voluntario> voluntariosCercanos = conn.createQuery(sqlQuery)
-                    .addParameter("emergenciaLatitud", emergencia.getLatitud())
-                    .addParameter("emergenciaLongitud", emergencia.getLongitud())
-                    .addParameter("N", N)
+            String sql = "SELECT voluntario.* " +
+                    "FROM voluntario, emergencia " +
+                    "WHERE idemergencia = :idEmergencia " +
+                    "ORDER BY ST_DISTANCE(emergencia.geom, voluntario.geom) " +
+                    "LIMIT " + N;
+            return conn.createQuery(sql)
+                    .addParameter("idEmergencia", idEmergencia)
                     .executeAndFetch(Voluntario.class);
-
-            return voluntariosCercanos;
         }
     }
-     */
 }

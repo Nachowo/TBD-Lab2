@@ -13,4 +13,7 @@ public interface VoluntarioRepository {
     Voluntario registrar(Voluntario voluntario);
 
     void actualizar(Long id, Voluntario voluntario);
+
+    ///////////////QUERY 22/////////////////////
+    List<Voluntario> VoluntariosCercanos(Long idEmergencia, int N);
 }

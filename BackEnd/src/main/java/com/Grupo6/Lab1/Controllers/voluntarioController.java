@@ -68,4 +68,10 @@ public class voluntarioController {
         voluntarioService.actualizar(idVoluntario,voluntario);
         return ResponseEntity.ok().build();
     }
+
+    ///////////////QUERY 22/////////////////////
+    @GetMapping("/voluntarioscercanos/{idEmergencia}/{N}")
+    public List<Voluntario> voluntariosCercanos(@PathVariable Long idEmergencia, @PathVariable int N) {
+        return voluntarioService.Voluntarioscercas(idEmergencia, N);
+    }
 }

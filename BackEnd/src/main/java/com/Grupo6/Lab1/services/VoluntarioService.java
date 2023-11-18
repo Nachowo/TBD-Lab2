@@ -43,4 +43,9 @@ public class VoluntarioService {
     public void actualizar(Long id, Voluntario voluntario) {
         voluntarioRepository.actualizar(id, voluntario);
     }
+
+    ///////////////QUERY 22/////////////////////
+    public List<Voluntario> Voluntarioscercas(Long idEmergencia, int N) {
+        return voluntarioRepository.VoluntariosCercanos(idEmergencia, N);
+    }
 }
