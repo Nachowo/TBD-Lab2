@@ -14,6 +14,9 @@ public class Institucion {
         this.contraseniaInstitucion = contraseniaInstitucion;
     }
 
+    public Institucion() {
+    }
+
     public Long getIdInstitucion() {
         return idInstitucion;
     }

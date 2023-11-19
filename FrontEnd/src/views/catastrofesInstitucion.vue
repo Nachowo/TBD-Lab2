@@ -22,9 +22,16 @@
                 type="text"
               ></v-text-field>
 
-              <div class="text-subtitle-1 text-medium-emphasis">Ubicación</div>
+              <div class="text-subtitle-1 text-medium-emphasis">Latitud</div>
               <v-text-field
-                v-model="ubicacion"
+                v-model="latitud"
+                type="text"
+                step="any"
+              ></v-text-field>
+
+              <div class="text-subtitle-1 text-medium-emphasis">Longitud</div>
+              <v-text-field
+                v-model="longitud"
                 type="text"
                 step="any"
               ></v-text-field>
@@ -62,25 +69,18 @@ export default {
   data() {
     return {
       nombreEmergencia: "",
-      ubicacion: "",
       latitud: "",
       longitud: "",
+      
     };
   },
   methods: {
     async crearEmergencia() {
       try {
-        const response = await fetch(
-          `https://api.mapbox.com/geocoding/v5/mapbox.places/${encodeURIComponent(
-            this.ubicacion
-          )}.json?access_token=pk.eyJ1IjoibmFjaG93byIsImEiOiJjbHAyeTVmamMwM2o0MmpzMWN1OTV3eWt1In0.M8r291Kj6H18Wp80JkRx4g`
-        );
 
-        const data = await response.json();
-
-        const location = data.features[0].center;
-        this.latitud = location[1];
-        this.longitud = location[0];
+        console.log(this.latitud);
+        console.log(this.longitud);
+        
         const institucionS = localStorage.getItem("institucion");
 
         const institucion = JSON.parse(institucionS);

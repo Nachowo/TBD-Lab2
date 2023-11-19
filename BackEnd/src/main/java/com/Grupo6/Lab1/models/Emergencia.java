@@ -17,6 +17,7 @@ public class Emergencia {
         this.latitud = latitud;
         this.longitud = longitud;
     }
+    public Emergencia(){}
 
     public Long getIdEmergencia() {
         return idEmergencia;

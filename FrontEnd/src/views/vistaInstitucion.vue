@@ -17,8 +17,6 @@
           <ul>
           </ul>
           <br>
-          <v-btn class="button" color="black" variant="outlined" to="/.">Botón inutil 1</v-btn>
-          <v-btn class="button" color="black" variant="outlined" to="/.">Botón inutil 2</v-btn>
         </div>
       </div>
     </div>
