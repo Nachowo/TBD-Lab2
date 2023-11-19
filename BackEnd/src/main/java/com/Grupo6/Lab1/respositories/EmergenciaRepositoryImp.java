@@ -33,7 +33,7 @@ public class EmergenciaRepositoryImp implements EmergenciaRepository {
 
     public List<Emergencia> getAll() {
         try (Connection conn = sql2o.open()) {
-            return conn.createQuery("SELECT * FROM Emergencia ORDER BY idEmergencia ASC")
+            return conn.createQuery("SELECT idEmergencia, nombreEmergencia, idInstitucion, latitud, longitud FROM Emergencia ORDER BY idEmergencia ASC")
                     .executeAndFetch(Emergencia.class);
         } catch (Exception e) {
             System.out.println(e.getMessage());
