@@ -1,7 +1,6 @@
 package com.Grupo6.Lab1.respositories;
 
 import com.Grupo6.Lab1.models.Ranking;
-import org.springframework.stereotype.Repository;
 
 import java.util.List;
 

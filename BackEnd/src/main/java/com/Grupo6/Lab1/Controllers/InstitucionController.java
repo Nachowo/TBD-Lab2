@@ -2,7 +2,6 @@ package com.Grupo6.Lab1.Controllers;
 
 import com.Grupo6.Lab1.Security.JwtUtil;
 import com.Grupo6.Lab1.models.Institucion;
-import com.Grupo6.Lab1.models.Voluntario;
 import com.Grupo6.Lab1.services.InstitucionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;

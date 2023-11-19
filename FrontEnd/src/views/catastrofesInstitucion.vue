@@ -7,29 +7,42 @@
           <h2 class="sub-titulo">Crear Nueva Emergencia</h2>
 
           <div class="content">
-            <v-card class="mx-auto pa-12 pb-8" elevation="4" max-width="500" rounded="lg" style="margin-top: 20px;">
-              <div class="text-subtitle-1 text-medium-emphasis">Nombre de la emergencia</div>
-              <v-text-field v-model="nombreEmergencia" type="text"></v-text-field>
+            <v-card
+              class="mx-auto pa-12 pb-8"
+              elevation="4"
+              max-width="500"
+              rounded="lg"
+              style="margin-top: 20px"
+            >
+              <div class="text-subtitle-1 text-medium-emphasis">
+                Nombre de la emergencia
+              </div>
+              <v-text-field
+                v-model="nombreEmergencia"
+                type="text"
+              ></v-text-field>
 
-              <div class="text-subtitle-1 text-medium-emphasis">Latitud</div>
-              <v-text-field v-model="latitud" type="number" step="any"></v-text-field>
+              <div class="text-subtitle-1 text-medium-emphasis">Ubicación</div>
+              <v-text-field
+                v-model="ubicacion"
+                type="text"
+                step="any"
+              ></v-text-field>
 
-              <div class="text-subtitle-1 text-medium-emphasis">Longitud</div>
-              <v-text-field v-model="longitud" type="number" step="any"></v-text-field>
-
-              <v-btn class="mb-8" color="green" size="large" variant="tonal" @click="crearEmergencia">
+              <v-btn
+                class="mb-8"
+                color="green"
+                size="large"
+                variant="tonal"
+                @click="crearEmergencia"
+              >
                 CREAR EMERGENCIA
               </v-btn>
               <router-link to="/vistaInstitucion">
-                  <v-btn
-                    class="mb-8"
-                    color="blue"
-                    size="large"
-                    variant="tonal"
-                  >
-                    VOLVER AL INICIO
-                  </v-btn>
-                </router-link>
+                <v-btn class="mb-8" color="blue" size="large" variant="tonal">
+                  VOLVER AL INICIO
+                </v-btn>
+              </router-link>
             </v-card>
           </div>
         </div>
@@ -39,7 +52,7 @@
 </template>
 
 <script>
-import axios from 'axios';
+import axios from "axios";
 import Header from "../components/HeaderInstitucion.vue";
 
 export default {
@@ -48,18 +61,56 @@ export default {
   },
   data() {
     return {
-      nombreEmergencia: '',
-      latitud: '',
-      longitud: '',
+      nombreEmergencia: "",
+      ubicacion: "",
+      latitud: "",
+      longitud: "",
     };
   },
   methods: {
     async crearEmergencia() {
       try {
-        
+        const response = await fetch(
+          `https://api.mapbox.com/geocoding/v5/mapbox.places/${encodeURIComponent(
+            this.ubicacion
+          )}.json?access_token=pk.eyJ1IjoibmFjaG93byIsImEiOiJjbHAyeTVmamMwM2o0MmpzMWN1OTV3eWt1In0.M8r291Kj6H18Wp80JkRx4g`
+        );
+
+        const data = await response.json();
+
+        const location = data.features[0].center;
+        this.latitud = location[1];
+        this.longitud = location[0];
+        const institucionS = localStorage.getItem("institucion");
+
+        const institucion = JSON.parse(institucionS);
+
+        const response2 = await axios.post(
+          "http://localhost:8090/emergencia/crearEmergencia",
+          {
+            nombreEmergencia: this.nombreEmergencia,
+            idInstitucion: institucion.idInstitucion,
+            latitud: this.latitud,
+            longitud: this.longitud,
+          }
+        );
+        if (response2.status === 200) {
+          this.$swal({
+            icon: "success",
+            title: "Éxito",
+            text: "Emergencia creada exitosamente",
+          }).then(() => {
+            this.$router.push("/vistaInstitucion");
+          });
+        } else {
+          this.$swal({
+            icon: "error",
+            title: "Error",
+            text: "Error al crear la emergencia",
+          });
+        }
       } catch (error) {
-        console.error('Error al crear la emergencia:', error);
-        // Manejar errores o mostrar mensajes de error al usuario
+        console.error(error);
       }
     },
   },

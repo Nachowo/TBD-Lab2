@@ -15,10 +15,6 @@ INSERT INTO public.Habilidad(nombreHabilidad) VALUES ('Supervivencia en entornos
 INSERT INTO public.Habilidad(nombreHabilidad) VALUES ('Transporte de heridos y evacuación médica');
 INSERT INTO public.Habilidad(nombreHabilidad) VALUES ('Coordinación de recursos de ayuda humanitaria');
 
---INSERT INTO public.Emergencia(nombreEmergencia, idInstitucion) VALUES('Fuego en domicilio', 1);
---INSERT INTO public.Emergencia(nombreEmergencia, idInstitucion) VALUES('Derrumbe', 1);
---INSERT INTO public.Emergencia(nombreEmergencia, idInstitucion) VALUES('Indundación', 1);
-
 --Insert de emergencias nuevo, ahora incluye longitud y latitud
 
 INSERT INTO Emergencia (nombreEmergencia, idInstitucion, latitud, longitud)
@@ -54,7 +50,3 @@ INSERT INTO public.EstadoTarea(estadoTarea) VALUES(False);
 INSERT INTO public.Tarea(nombreTarea, idEstadoTarea, idEmergencia) VALUES('apagar', 1, 1);
 
 INSERT INTO public.TareaHabilidad(idTarea, idHabilidad) VALUES(1, 1);
-
-
-UPDATE emergencia SET geom = ST_SetSRID(ST_MakePoint(-70.641, -33.468), 4326)
---UPDATE emergencia SET geom = ST_SetSRID(ST_MakePoint(latitud, longitud),4326)te mandaba al antartica--

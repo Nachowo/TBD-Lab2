@@ -1,10 +1,8 @@
 package com.Grupo6.Lab1.Controllers;
 
-import com.Grupo6.Lab1.models.EstadoTarea;
 import com.Grupo6.Lab1.models.Habilidad;
 import com.Grupo6.Lab1.services.HabilidadService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;

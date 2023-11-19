@@ -1,6 +1,5 @@
 package com.Grupo6.Lab1.respositories;
 
-import com.Grupo6.Lab1.models.Emergencia;
 import com.Grupo6.Lab1.models.EstadoTarea;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;

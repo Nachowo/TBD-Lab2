@@ -67,7 +67,7 @@ public class Voluntario {
                 '}';
     }
 
-    public double getLatitud() {    
+    public double getLatitud() {
         return latitud;
     }
 

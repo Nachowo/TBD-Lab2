@@ -1,7 +1,5 @@
 package com.Grupo6.Lab1.services;
 
-import com.Grupo6.Lab1.models.EmeHabilidad;
-
 import com.Grupo6.Lab1.models.Emergencia;
 import com.Grupo6.Lab1.respositories.EmergenciaRepository;
 import org.springframework.beans.factory.annotation.Autowired;

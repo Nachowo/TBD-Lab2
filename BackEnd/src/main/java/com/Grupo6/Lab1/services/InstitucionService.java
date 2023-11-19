@@ -1,7 +1,6 @@
 package com.Grupo6.Lab1.services;
 
 import com.Grupo6.Lab1.models.Institucion;
-import com.Grupo6.Lab1.models.Voluntario;
 import com.Grupo6.Lab1.respositories.InstitucionRepository;
 import org.mindrot.jbcrypt.BCrypt;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,10 +19,6 @@ public class InstitucionService {
         Institucion i = institucionRepository.getInstitucionByEmail(institucion.getCorreoInstitucion());
         System.out.println(i.getContraseniaInstitucion());
         System.out.println(institucion.getContraseniaInstitucion());
-        if(i == null){
-            System.out.println("v null");
-            return false;
-        }
         return BCrypt.checkpw(institucion.getContraseniaInstitucion(), i.getContraseniaInstitucion());
     }
     public Institucion createInstitucion(Institucion institucion) {

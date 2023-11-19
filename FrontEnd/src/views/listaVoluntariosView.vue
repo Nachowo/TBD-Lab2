@@ -3,12 +3,18 @@
     <Header />
     <div class="centered-message">
       <h1>
-        <img alt="Vue logo" class="logo" src="@/assets/logo_sai_usach_4.png" width="100" height="100" />
+        <img
+          alt="Vue logo"
+          class="logo"
+          src="@/assets/logo_sai_usach_4.png"
+          width="100"
+          height="100"
+        />
       </h1>
       <p class="titulo">¿Qué Emergencia desea seleccionar?</p>
       <v-select
         v-model="selectedEmergencia"
-        :items="historial.map(emergencia => emergencia.nombreEmergencia)"
+        :items="historial.map((emergencia) => emergencia.nombreEmergencia)"
         label="Seleccionar emergencia"
         @change="seleccionarEmergencia"
       ></v-select>
@@ -23,24 +29,24 @@
       </div>
 
       <div class="input-container">
-        <v-btn class="mb-8 btn-volver" color="success" @click="aceptarEmergencia">ACEPTAR</v-btn>
+        <v-btn
+          class="mb-8 btn-volver"
+          color="success"
+          @click="aceptarEmergencia"
+          >ACEPTAR</v-btn
+        >
         <router-link to="/vistaInstitucion">
-                  <v-btn
-                    class="mb-8"
-                    color="blue"
-                    size="large"
-                    variant="tonal"
-                  >
-                    VOLVER AL INICIO
-                  </v-btn>
-                </router-link>
+          <v-btn class="mb-8" color="blue" size="large" variant="tonal">
+            VOLVER AL INICIO
+          </v-btn>
+        </router-link>
       </div>
     </div>
   </v-layout>
 </template>
 
 <script>
-import axios from 'axios';
+import axios from "axios";
 import Header from "../components/HeaderInstitucion.vue";
 
 export default {
@@ -52,7 +58,7 @@ export default {
       historial: [],
       voluntario: "",
       selectedEmergencia: null,
-      cantidadVoluntarios: 0, 
+      cantidadVoluntarios: 0,
     };
   },
   mounted() {
@@ -62,15 +68,21 @@ export default {
   methods: {
     async cargarEmergencias() {
       try {
-        const response = await axios.get("http://localhost:8090/emergencia/verEmergencia");
+        const response = await axios.get(
+          "http://localhost:8090/emergencia/verEmergencia"
+        );
+        console.log("Emergencias:", response.data)
         this.historial = response.data;
       } catch (error) {
-        console.error('Error al cargar emergencias:', error);
+        console.error("Error al cargar emergencias:", error);
       }
     },
     seleccionarEmergencia() {
       if (this.selectedEmergencia !== null) {
-        const emergenciaSeleccionada = this.historial.find(Emergencia => Emergencia.nombreEmergencia === this.selectedEmergencia);
+        const emergenciaSeleccionada = this.historial.find(
+          (Emergencia) =>
+            Emergencia.nombreEmergencia === this.selectedEmergencia
+        );
         if (emergenciaSeleccionada) {
           this.verDetallesEmergencia(emergenciaSeleccionada.idEmergencia);
         }
@@ -81,7 +93,6 @@ export default {
     },
     aceptarEmergencia() {
       console.log(`Aceptar la Emergencia con ID ${this.selectedEmergencia}`);
-    
     },
     getVol() {
       this.voluntario = JSON.parse(localStorage.getItem("voluntario"));
@@ -89,7 +100,7 @@ export default {
   },
 };
 </script>
-  
+
 <style scoped>
 .centered-layout {
   display: flex;
@@ -110,7 +121,7 @@ export default {
   padding: 15px;
   border: 2px solid #020202;
   border-radius: 10px;
-  background-color: #EA7600;
+  background-color: #ea7600;
 }
 
 .btn-volver {
