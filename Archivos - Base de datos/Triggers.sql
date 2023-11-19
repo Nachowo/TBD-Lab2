@@ -139,24 +139,6 @@ FOR EACH ROW
 EXECUTE FUNCTION actualizar_coordenadas_emergencia();
 
 
--- Funcion para añadir geom a la emergencia
-
-CREATE OR REPLACE FUNCTION actualizar_coordenadas_emergencia()
-RETURNS TRIGGER AS $$
-BEGIN
-    NEW.geom = ST_SetSRID(ST_MakePoint(NEW.longitud, NEW.latitud), 4326);
-    RETURN NEW;
-END;
-$$ LANGUAGE plpgsql;
-
--- Trigger que activa la funcion
-CREATE TRIGGER trig_actualizar_coordenadas_emergencia
-BEFORE INSERT OR UPDATE
-ON Emergencia
-FOR EACH ROW
-EXECUTE FUNCTION actualizar_coordenadas_emergencia();
-
-
 -- Funcion para añadir geom a la voluntario
 
 CREATE OR REPLACE FUNCTION actualizar_coordenadas_voluntario()
