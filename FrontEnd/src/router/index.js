@@ -78,6 +78,11 @@ const router = createRouter({
       path: '/listaVoluntariosView',
       name: 'listaVoluntariosView',
       component: () => import('../views/listaVoluntariosView.vue')
+    },
+    {
+      path: '/voluntariosCercanos',
+      name: 'voluntariosCercanos',
+      component: () => import('../views/voluntariosCercanos.vue')
     }
 
   ]

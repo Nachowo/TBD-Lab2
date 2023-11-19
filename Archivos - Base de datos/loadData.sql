@@ -50,3 +50,43 @@ INSERT INTO public.EstadoTarea(estadoTarea) VALUES(False);
 INSERT INTO public.Tarea(nombreTarea, idEstadoTarea, idEmergencia) VALUES('apagar', 1, 1);
 
 INSERT INTO public.TareaHabilidad(idTarea, idHabilidad) VALUES(1, 1);
+
+INSERT INTO public.voluntario(
+	idvoluntario, emailvoluntario, rutvoluntario, nombrecompletovoluntario, contraseniavoluntario, latitud, longitud, geom)
+	VALUES (1, 'benjaminm@gmail.com', '2030133-3', 'Benjamin Munoz', '123', -33.509406273500936, -70.7562214894338, NULL);
+
+INSERT INTO public.voluntario(
+	idvoluntario, emailvoluntario, rutvoluntario, nombrecompletovoluntario, contraseniavoluntario, latitud, longitud, geom)
+	VALUES (2, 'pabloR@gmail.com', '16607148-8', 'Pablo Ramirez', '123', -33.46537616762551, -70.70206816509021, NULL);
+
+INSERT INTO public.voluntario(
+	idvoluntario, emailvoluntario, rutvoluntario, nombrecompletovoluntario, contraseniavoluntario, latitud, longitud, geom)
+	VALUES (3, 'diego@gmail.com', '23191553-2', 'Diego Ahumada', '123', -33.454407997771135, -70.59342772217948, NULL);
+
+INSERT INTO public.voluntario(
+	idvoluntario, emailvoluntario, rutvoluntario, nombrecompletovoluntario, contraseniavoluntario, latitud, longitud, geom)
+	VALUES (4, 'catalinar@gmail.com', '22610783-5', 'Catalina Ramos', '123', -33.45534615508145, -70.5144658232325, NULL);
+
+INSERT INTO public.voluntario(
+	idvoluntario, emailvoluntario, rutvoluntario, nombrecompletovoluntario, contraseniavoluntario, latitud, longitud, geom)
+	VALUES (5, 'enzozo@gmail.com', '40063760-1', 'Enzo Gulppi', '123', -33.23041092789878, -70.81034904765384, NULL);
+
+INSERT INTO public.voluntario(
+	idvoluntario, emailvoluntario, rutvoluntario, nombrecompletovoluntario, contraseniavoluntario, latitud, longitud, geom)
+	VALUES (6, 'pedrodo@gmail.com', '17343331-k', 'Pedro Avaca', '123', -33.712216546836764, -70.72904444033928, NULL);
+
+INSERT INTO public.voluntario(
+	idvoluntario, emailvoluntario, rutvoluntario, nombrecompletovoluntario, contraseniavoluntario, latitud, longitud, geom)
+	VALUES (7, 'Alejandroa@gmail.com', '52994823-9', 'Alejandro Aldea', '123', -33.454407997771135, -70.5144658232325, NULL);
+
+INSERT INTO public.voluntario(
+	idvoluntario, emailvoluntario, rutvoluntario, nombrecompletovoluntario, contraseniavoluntario, latitud, longitud, geom)
+	VALUES (8, 'nachowo@gmail.com', '34783507-2', 'Ignacio Arias', '123', -33.46537616762551, -70.72904444033928, NULL);
+
+INSERT INTO public.voluntario(
+	idvoluntario, emailvoluntario, rutvoluntario, nombrecompletovoluntario, contraseniavoluntario, latitud, longitud, geom)
+	VALUES (9, 'Yerko@gmail.com', '33971187-9', 'Yerko', '123', -33.712216546836764, -70.59342772217948, NULL);
+
+INSERT INTO public.voluntario(
+	idvoluntario, emailvoluntario, rutvoluntario, nombrecompletovoluntario, contraseniavoluntario, latitud, longitud, geom)
+	VALUES (10, 'gabeloco@gmail.com', '23873647-1', 'Gabriel Ojeda', '123', -33.23041092789878, -70.7562214894338, NULL);

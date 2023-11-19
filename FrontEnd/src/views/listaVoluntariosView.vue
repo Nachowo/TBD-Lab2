@@ -16,7 +16,7 @@
         v-model="selectedEmergencia"
         :items="historial.map((emergencia) => emergencia.nombreEmergencia)"
         label="Seleccionar emergencia"
-        @change="seleccionarEmergencia"
+        @update:modelValue="seleccionarEmergencia()"
       ></v-select>
 
       <div class="input-container">
@@ -59,6 +59,7 @@ export default {
       voluntario: "",
       selectedEmergencia: null,
       cantidadVoluntarios: 0,
+      emergencia: null,
     };
   },
   mounted() {
@@ -71,13 +72,12 @@ export default {
         const response = await axios.get(
           "http://localhost:8090/emergencia/verEmergencia"
         );
-        console.log("Emergencias:", response.data)
         this.historial = response.data;
       } catch (error) {
         console.error("Error al cargar emergencias:", error);
       }
     },
-    seleccionarEmergencia() {
+    seleccionarEmergencia: function() {
       if (this.selectedEmergencia !== null) {
         const emergenciaSeleccionada = this.historial.find(
           (Emergencia) =>
@@ -85,14 +85,26 @@ export default {
         );
         if (emergenciaSeleccionada) {
           this.verDetallesEmergencia(emergenciaSeleccionada.idEmergencia);
+          this.emergencia = emergenciaSeleccionada
         }
       }
     },
-    verDetallesEmergencia(idEmergenciaa) {
+    verDetallesEmergencia(idEmergencia) {
       console.log(`Ver detalles de la Emergencia con ID ${idEmergencia}`);
     },
-    aceptarEmergencia() {
-      console.log(`Aceptar la Emergencia con ID ${this.selectedEmergencia}`);
+
+
+    async aceptarEmergencia() {
+      try {
+        const response = await axios.get(
+          "http://localhost:8090/voluntario/voluntarioscercanos/" + this.emergencia.idEmergencia + "/" +this.cantidadVoluntarios
+        );
+        localStorage.setItem('voluntariosCercanos',JSON.stringify(response.data));
+        this.$router.push('/voluntariosCercanos');
+      } catch (error) {
+        console.error("Error al cargar emergencias:", error);
+      }
+
     },
     getVol() {
       this.voluntario = JSON.parse(localStorage.getItem("voluntario"));
