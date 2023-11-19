@@ -15,6 +15,7 @@ public class DatabaseContext {
     private String dbUser;
 
     @Value("1234")
+
     private String dbPass;
 
     @Bean
