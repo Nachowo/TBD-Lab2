@@ -25,7 +25,7 @@ export default {
         });
 
         if (response.status === 200) {
-          this.$swal({ // Muestra la alerta de éxito
+          this.$swal({
               icon: 'success',
               title: 'Éxito',
               text: 'Su perfil de Institución se creó exitosamente',
@@ -44,6 +44,7 @@ export default {
   },
 };
 </script>
+
 <template>
   <h3 style="text-align: center; margin-top: 40px;">
         CREAR CUENTA INSTITUCIÓN
@@ -94,8 +95,6 @@ export default {
       >
         Registrarse
       </v-btn>
-
-    
 
       <v-card-text class="text-center">
         <a

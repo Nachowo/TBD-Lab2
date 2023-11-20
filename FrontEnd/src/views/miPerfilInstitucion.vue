@@ -62,7 +62,7 @@ export default {
       institucion: {
         correoInstitucion: '',
         nombreInstitucion: '',
-        idInstitucion: '', // Agrega la propiedad 'id' al objeto institucion
+        idInstitucion: '',
       },
     };
   },

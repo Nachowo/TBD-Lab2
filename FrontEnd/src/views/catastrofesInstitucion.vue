@@ -25,14 +25,16 @@
               <div class="text-subtitle-1 text-medium-emphasis">Latitud</div>
               <v-text-field
                 v-model="latitud"
-                type="text"
+                type="number"
                 step="any"
+                inputmode="numeric"
+                pattern="[0-9]*[.]?[0-9]+"
               ></v-text-field>
 
               <div class="text-subtitle-1 text-medium-emphasis">Longitud</div>
               <v-text-field
                 v-model="longitud"
-                type="text"
+                type="number"
                 step="any"
               ></v-text-field>
 

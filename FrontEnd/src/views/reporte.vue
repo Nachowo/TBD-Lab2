@@ -32,67 +32,9 @@
         Volver al menu de inicio 
       </v-btn>
     </v-layout>
-  </template>
-  
-  <style scoped>
-  .centered-layout {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 100vh;
-  }
-  
-  .centered-message {
-    text-align: center;
-    padding: 100px;
-  }
-  
-  .titulo {
-    font-size: 34px;
-    font-weight: bold;
-    
-    padding: 15px;
-    border: 2px solid #020202;
-    border-radius: 10px;
-    margin-bottom: 20px;
-    margin-top: -200px;
-    background-color: #EA7600;
-  }
-  
-  .tabla-container {
-    margin-top: 10px; /* Ajusta el margen superior */
-    text-align: center;
-  }
-  
-  .tabla {
-    width: 100%; /* Usa el 100% del ancho */
-    margin: 0 auto;
-    border-collapse: collapse;
-    border-radius: 10px;
-    overflow: hidden;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
-    table-layout: fixed; /* Ajusta el ancho de las columnas de manera uniforme */
-  }
-  
-  
-  .tabla th{
-    
-    border-top: 10px;
-    border-bottom: 10px;
-  }
-  .tabla td {
-    padding: 15px;
-    text-align: left;
-    border-bottom: 1px solid #ddd;
-    white-space: nowrap; 
-    overflow: hidden;
-    text-overflow: ellipsis; /* Agrega puntos suspensivos si el contenido es demasiado largo */
-  }
-  
-  </style>
-  
-  <script> 
+</template>
+
+<script> 
   import axios from 'axios';
   import Header from "../components/Header.vue";
 
@@ -146,5 +88,62 @@
   
     },
   };
-  </script>
+</script>
+
+<style scoped>
+.centered-layout {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+.centered-message {
+  text-align: center;
+  padding: 100px;
+}
+
+.titulo {
+  font-size: 34px;
+  font-weight: bold;
+  
+  padding: 15px;
+  border: 2px solid #020202;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  margin-top: -200px;
+  background-color: #EA7600;
+}
+
+.tabla-container {
+  margin-top: 10px;
+  text-align: center;
+}
+
+.tabla {
+  width: 100%;
+  margin: 0 auto;
+  border-collapse: collapse;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+  table-layout: fixed;
+}
+
+
+.tabla th{
+  
+  border-top: 10px;
+  border-bottom: 10px;
+}
+.tabla td {
+  padding: 15px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+  white-space: nowrap; 
+  overflow: hidden;
+  text-overflow: ellipsis; /* Agrega puntos suspensivos si el contenido es demasiado largo */
+}
+</style>
   

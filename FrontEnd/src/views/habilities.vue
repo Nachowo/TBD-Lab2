@@ -59,9 +59,9 @@ export default {
       lista1:[]
     }),
   mounted(){
-    this.getHabilidades(); //cambiar por obtener las no seleccionadas
+    this.getHabilidades();
     this.getVol();
-    this.getObtenidas(); //obtener habilidades ya escogidas
+    this.getObtenidas();
   },
   methods: {
     async getObtenidas(){

@@ -63,7 +63,7 @@ export default {
               title: 'Éxito',
               text: 'Su perfil de Voluntario se creó exitosamente',
           }).then(() => {
-              this.$router.push('/login'); // Redirige al usuario
+              this.$router.push('/login');
           });
         } 
         
@@ -86,10 +86,6 @@ export default {
       );
 
       const data = await response.json();
-
-      // Lista de features => coincidencias
-      // la primera es la mas parecida
-
       const location = data.features[0].center;
       this.latitud = location[1];
       this.longitud = location[0];
@@ -151,14 +147,6 @@ export default {
           v-model="rut"
         ></v-text-field>
       </v-responsive>
-      
-      
-
-      <!--
-        <div class="map-container" >
-        <div id="map"></div>
-      </div>
-      -->
 
       <v-responsive class="mx-auto" max-width="400">
         <v-text-field

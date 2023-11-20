@@ -138,7 +138,7 @@ export default {
 
 .btn-volver {
   margin: 5px;
-  width: 180px; /* Cambia el ancho para que ambos botones tengan el mismo tamaño */
+  width: 180px;
   padding: 8px 20px;
   border-radius: 4px;
   cursor: pointer;
